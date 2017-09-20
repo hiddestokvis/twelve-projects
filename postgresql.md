@@ -1,3 +1,4 @@
+```SQL
 CREATE OR REPLACE FUNCTION increase_no_pitches() RETURNS TRIGGER AS
 $$
 	BEGIN
@@ -30,3 +31,4 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_pitch AFTER INSERT ON pitch FOR EACH ROW EXECUTE PROCEDURE increase_no_pitches();
 CREATE TRIGGER delete_pitch AFTER DELETE ON pitch FOR EACH ROW EXECUTE PROCEDURE decrease_no_pitches();
+```
