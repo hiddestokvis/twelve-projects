@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 import * as massive from 'massive';
 import { config } from './config';
 import { log, Severity } from './utils';
@@ -12,6 +13,7 @@ import { connect  } from './datasource';
  */
 const app: express.Express = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 /*
   Setup datasource
