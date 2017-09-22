@@ -34,7 +34,12 @@ export function get(app: express.Express, config: Config) {
     })
     .catch((error) => {
       log(Severity.ERROR, 'SLOTS', JSON.stringify(error));
-      res.status(500).json(error);
+      res.status(500).json({
+        status: 500,
+        name: error.name,
+        error: error.message,
+        stack: error.stack,
+      });
     });
   });
 }

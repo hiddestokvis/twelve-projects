@@ -31,7 +31,12 @@ export function count(app: express.Express, config: Config) {
     })
     .catch((error) => {
       log(Severity.ERROR, 'PITCH', JSON.stringify(error));
-      res.status(500).json(error);
+      res.status(500).json({
+        status: 500,
+        name: error.name,
+        error: error.message,
+        stack: error.stack,
+      });
     });
   });
 }
@@ -73,7 +78,9 @@ export function store(app: express.Express, config: Config) {
       if (!person.validity || !pitch.validity) {
         log(Severity.WARNING, 'PITCH', `Validation errors in storing pitch`);
         res.status(422).json({
-          error: 'invalid input',
+          status: 422,
+          name: 'INVALID_INPUT',
+          error: 'Please check input',
         });
       } else {
         // Store pitch object (and person object by extension)
@@ -85,7 +92,12 @@ export function store(app: express.Express, config: Config) {
         // Handle errors in storing proces
         .catch((error) => {
           log(Severity.ERROR, 'PITCH', JSON.stringify(error));
-          res.status(422).json({ error });
+          res.status(422).json({
+            status: 422,
+            name: error.name,
+            error: error.message,
+            stack: error.stack,
+          });
         });
       }
     }
