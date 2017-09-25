@@ -19,9 +19,11 @@ CREATE OR REPLACE FUNCTION email_in_slot(mail TEXT, slot_id INT) RETURNS BOOLEAN
 $$
 	DECLARE
 		count INT;
+		count_free INT;
 	BEGIN
-		SELECT COUNT(pitch.id) FROM pitch LEFT JOIN personalia ON personalia.id = pitch.person WHERE personalia.email = mail AND pitch.slot = slot_id INTO count;
-		IF count > 0 THEN
+		SELECT COUNT(pitch.id) FROM pitch LEFT JOIN personalia ON personalia.id = pitch.person WHERE personalia.email = mail AND pitch.slot != 1 INTO count;
+		SELECT COUNT(pitch.id) FROM pitch LEFT JOIN personalia ON personalia.id = pitch.person WHERE personalia.email = mail AND pitch.slot = 1 INTO count_free;
+		IF count > 0 OR count_free > 0 THEN
 			RETURN TRUE;
 		ELSE
 			RETURN FALSE;
