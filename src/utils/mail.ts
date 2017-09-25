@@ -11,7 +11,7 @@ export function sendMail(name: string, email: string) {
   personalization.addTo(to);
   personalization.setSubject(subject);
   personalization.addSubstitution(substitution);
-  const mail = new helper.Mail(from, subject, to, new helper.Content('terxt/plain', ''));
+  const mail = new helper.Mail(from, subject, to, new helper.Content('terxt/plain', 'Je pitch is verzonden!'));
   mail.setTemplateId('fd433b9a-6284-41bc-af43-0a1cb5fc033e');
   mail.addPersonalization(personalization);
   const sg = sendgrid(process.env.SENDGRID_API_KEY);
