@@ -23,7 +23,7 @@ export function sendMail(name: string, email: string) {
             name,
           }],
           substitution: {
-            name,
+            '-name': name,
           }
       }],
       subject,
