@@ -8,6 +8,8 @@ export function sendMail(name: string, email: string) {
   const subject = 'We hebben je pitch ontvangen!';
   const substitution = new helper.Substitution('name', name);
   const personalization = new helper.Personalization();
+  personalization.addTo(to);
+  personalization.setSubject(subject);
   personalization.addSubstitution(substitution);
   const mail = new helper.Mail(from, subject, to, new helper.Content('terxt/plain', ''));
   mail.setTemplateId('fd433b9a-6284-41bc-af43-0a1cb5fc033e');
