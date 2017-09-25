@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { ds } from '../';
 import { Pitch, Personalia, Slot } from '../models';
 import { validator, schema } from '../validators/pitch';
-import { log, Severity } from '../utils';
+import { log, Severity, sendMail } from '../utils';
 
 const path: string = 'pitches';
 const v = validator();
@@ -88,6 +88,7 @@ export function store(app: express.Express, config: Config) {
         .then((p) => {
           log(Severity.INFO, 'PITCH', `Stored pitch with id ${pitch.id}`);
           res.status(201).json(pitch.render());
+          sendMail(req.body.person.first_name, req.body.person.email);
         })
         // Handle errors in storing proces
         .catch((error) => {
