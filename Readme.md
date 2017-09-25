@@ -15,3 +15,7 @@ We choose the technologies per project, but in general we will work with the Ado
 ## So what is this?
 
 This repo contains the back-end for our "Twelve-Projects" campaign website. It's a REST interface that handles the storing of your pitches. We decided to open-source it so you can see how we work :) It's nothing much but feel free to use it in whatever way you see fit :)
+
+## Front-end?
+
+It's also open-source. It's made in react and found [here](https://github.com/hiddestokvis/twelve-projects-landingpage)
