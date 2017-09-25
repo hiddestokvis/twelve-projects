@@ -7,6 +7,7 @@ import { config } from './config';
 import { log, Severity } from './utils';
 import * as pitches from './routes/pitch';
 import * as slots from './routes/slots';
+import * as times from './routes/time';
 import { connect  } from './datasource';
 import { initializeListener } from './sockets';
 
@@ -28,6 +29,7 @@ export const ds: Promise<massive.Database> = connect();
 pitches.count(app, config);
 pitches.store(app, config);
 slots.get(app, config);
+times.get(app, config);
 
 /*
   Listen to postgres notifications
