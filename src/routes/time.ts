@@ -14,18 +14,18 @@ const path: string = 'times';
 export function get(app: express.Express, config: Config) {
   app.get(`/${config.base}/${config.version}/${path}`, (req: express.Request, res: express.Response) => {
     const moments: moment.Moment[] = [
-      moment('2017-10-09 12:00:00+02:00'),
-      moment('2017-10-23 12:00:00+02:00'),
-      moment('2017-11-06 12:00:00+02:00'),
-      moment('2017-11-20 12:00:00+02:00'),
-      moment('2017-12-04 12:00:00+02:00'),
-      moment('2017-12-18 12:00:00+02:00'),
-      moment('2018-01-01 12:00:00+02:00'),
-      moment('2018-01-15 12:00:00+02:00'),
-      moment('2018-01-29 12:00:00+02:00'),
-      moment('2018-02-12 12:00:00+02:00'),
-      moment('2018-02-26 12:00:00+02:00'),
-      moment('2018-03-12 12:00:00+02:00'),
+      moment('2017-10-09 22:00:00+02:00'),
+      moment('2017-10-23 22:00:00+02:00'),
+      moment('2017-11-06 22:00:00+02:00'),
+      moment('2017-11-20 22:00:00+02:00'),
+      moment('2017-12-04 22:00:00+02:00'),
+      moment('2017-12-18 22:00:00+02:00'),
+      moment('2018-01-01 22:00:00+02:00'),
+      moment('2018-01-15 22:00:00+02:00'),
+      moment('2018-01-29 22:00:00+02:00'),
+      moment('2018-02-12 22:00:00+02:00'),
+      moment('2018-02-26 22:00:00+02:00'),
+      moment('2018-03-12 22:00:00+02:00'),
     ];
     for (let i = 0; i < moments.length; i += 1) {
       const m: moment.Moment = moments[i];
